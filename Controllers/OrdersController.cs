@@ -72,6 +72,35 @@ namespace KinetiqueAPI.Controllers
 
             return Ok(order);
         }
+
+        // POST: api/orders/confirm
+        [HttpPost("confirm")]
+        public async Task<IActionResult> ConfirmOrder([FromBody] OrderConfirmationRequest request)
+        {
+            try
+            {
+                await _emailService.SendOrderConfirmationEmailAsync(
+                    request.CustomerEmail,
+                    request.OrderId,
+                    request.ProductName,
+                    request.Amount
+                );
+                return Ok("Confirmation email sent");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Email failed: {ex.Message}");
+                return StatusCode(500, $"Email failed: {ex.Message}");
+            }
+        }
+
+        public class OrderConfirmationRequest
+        {
+            public string CustomerEmail { get; set; } = string.Empty;
+            public int OrderId { get; set; }     
+            public string ProductName { get; set; } = string.Empty;
+            public decimal Amount { get; set; }
+        }
     }
 
     public class UpdateStatusRequest
