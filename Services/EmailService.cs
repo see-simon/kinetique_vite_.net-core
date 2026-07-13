@@ -33,8 +33,8 @@ namespace KinetiqueAPI.Services
             using var client = new SmtpClient();
             await client.ConnectAsync(
                 _config["EmailSettings:SmtpServer"],
-                int.Parse(_config["EmailSettings:SmtpPort"]!),
-                false
+                465,
+                true
             );
             await client.AuthenticateAsync(
                 _config["EmailSettings:SenderEmail"],
