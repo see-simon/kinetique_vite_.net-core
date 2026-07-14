@@ -1,4 +1,5 @@
 using MailKit.Net.Smtp;
+using MailKit.Security;
 using MimeKit;
 
 namespace KinetiqueAPI.Services
@@ -81,11 +82,17 @@ namespace KinetiqueAPI.Services
                 };
 
                 using var client = new SmtpClient();
+
+                int port = _config.GetValue<int>("EmailSettings:SmtpPort", 587);
+
+                
                 await client.ConnectAsync(
                     _config["EmailSettings:SmtpServer"],
-                    int.Parse(_config["EmailSettings:SmtpPort"]!),
-                    false
+                    port,
+                    SecureSocketOptions.StartTls
                 );
+
+
                 await client.AuthenticateAsync(
                     _config["EmailSettings:SenderEmail"],
                     _config["EmailSettings:SenderPassword"]
