@@ -9,17 +9,16 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowKinetique", policy =>
     {
-
         policy.WithOrigins(
-        "http://localhost:5173",
-        "https://kinetique-vite-react-git-main-sea6580gmailcoms-projects.vercel.app",
-        "https://sandbox.payfast.co.za"
+            "http://localhost:5173",
+            "https://kinetique-vite-react.vercel.app",
+            "https://kinetique-vite-react-git-main-sea6580gmailcoms-projects.vercel.app",
+            "https://sandbox.payfast.co.za"
         )
         .AllowAnyHeader()
         .AllowAnyMethod();
     });
 });
-
 // Add DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
