@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KinetiqueAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a310bbd51513cddd50bf973100b57bb907ac8740")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+356ce28350650945eb272cb3d443eb3ffc96b601")]
 [assembly: System.Reflection.AssemblyProductAttribute("KinetiqueAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KinetiqueAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
